@@ -109,13 +109,12 @@ jobs:
 
       - name: build with pyinstaller
         run: |
-          cd src/
           pyinstaller -w --onefile tkinter-sample.py --name tkinter-app
 
       - uses: actions/upload-artifact@master
         with:
           name: artifacts-${{ matrix.os }}
-          path: src/dist/
+          path: dist/
 
   # test-artifact:
   #   name: testing executable OS-${{ matrix.os }} python-${{ matrix.python-version }}
