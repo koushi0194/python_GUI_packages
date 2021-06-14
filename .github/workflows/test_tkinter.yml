@@ -33,30 +33,34 @@ jobs:
       run: pip install -r requirements.txt
       if: steps.cache-virtualenv.outputs.cache-hit != 'true'
 
-  # lint:
-  #   name: Lint code using pylint
-  #   strategy:
-  #       matrix:
-  #         python-version: [3.8]
-  #   runs-on: macos-latest
-  #   needs: create_venv
-  #   steps:
-  #   - name: Checkout
-  #     uses: actions/checkout@v1
+  lint:
+    name: Lint code using pylint
+    strategy:
+        matrix:
+          python-version: [3.8]
+    runs-on: macos-latest
+    needs: create_venv
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
 
-  #   - name: Set up Python ${{ matrix.python-version }}
-  #     uses: actions/setup-python@v1
-  #     with:
-  #       python-version: ${{ matrix.python-version }}
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
 
-  #   - name: Restore virtual env
-  #     uses: syphar/restore-virtualenv@v1
-  #     id: cache-virtualenv
+    - name: Restore virtual env
+      uses: syphar/restore-virtualenv@v1
+      id: cache-virtualenv
 
-  #   - name: Lint code with pylint
-  #     run: |
-  #       cd src
-  #       pylint wallet.py
+    # - name: Lint code with pylint
+    #   run: |
+    #     cd src
+    #     pylint wallet.py
+
+    - name: Run code 
+      run: |
+        python tkinter-sample
 
   # test:
   #   name: Test code using pytest
