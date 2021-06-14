@@ -89,7 +89,7 @@ jobs:
 
   build:
     name: Upload executable to artifact OS-${{ matrix.os }} python-${{ matrix.python-version }}
-    needs: test
+    needs: create_venv
     strategy:
       matrix:
         python-version: [3.6, 3.8]
