@@ -29,9 +29,9 @@ jobs:
     - uses: syphar/restore-pip-download-cache@v1
       if: steps.cache-virtualenv.outputs.cache-hit != 'true'
 
-    - name: Install pip requirements
-      run: pip install -r requirements.txt
-      if: steps.cache-virtualenv.outputs.cache-hit != 'true'
+    # - name: Install pip requirements
+    #   run: pip install -r requirements.txt
+    #   if: steps.cache-virtualenv.outputs.cache-hit != 'true'
 
   # lint:
   #   name: Lint code using pylint
